@@ -1,16 +1,43 @@
 package au.com.telstra.simcardactivator.models;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
 public class SimCard {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
     private String iccid;
 
     private String customerEmail;
+    private boolean active;
 
-    public SimCard(String iccid, String customerEmail) {
+    public SimCard() {
+    }
+
+    public SimCard(String iccid, String customerEmail, boolean active) {
         this.iccid = iccid;
         this.customerEmail = customerEmail;
+        this.active = active;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public String getIccid() {
